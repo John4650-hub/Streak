@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Streak</title>
+  <script src="lib/eruda.min.js"></script>
+  <link rel="stylesheet" href="style/bootstrap.min.css">
+</head>
+
+<body>
+  <div style="height: 100%;" class="conatiner w-100 ms-2 bg-light border rounded position-relative" id="streakTable">
+    <p class="text-success text-center fs-3 fw-bolder" id="month"></p>
+    <canvas class="w-100" id="canv"></canvas>
+    <div class="row">
+      <div class="fw-bold col">Current Streak:</div>
+      <div class="fw-bolder col-6 text-primary" id="currentStreak">0</div>
+    </div>
+    <div class="row">
+      <div class="fw-bold col">Days learned:</div>
+      <div class="fw-bolder col-6 text-primary" id="DaysLnd">0</div>
+    </div>
+    <div class="row">
+      <div class="col fw-bold">longest streak:</div>
+      <div class="fw-bolder col-6 text-primary" id="longestStrk">0</div>
+    </div>
+    <div class="row mt-5">
+      <div class="col-6">
+        <button id="mvRight" type="button" class="btn btn-secondary w-100 ">
+          《</button>
+      </div>
+      <div class="col-6">
+        <button id="mvLeft" type="button" class="btn btn-secondary w-100 ">》</button>
+      </div>
+    </div>
+  </div>
+  <script src="lib/bootstrap.min.js"></script>
+  <script src="lib/devTools.js"></script>
+  <script type="module" src="index.js"></script>
+
+</body>
+
+</html>
