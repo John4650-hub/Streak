@@ -1,3 +1,4 @@
+function startApp(data_json){
 let canv = document.getElementById('canv')
 let monthDOm = document.getElementById('month')
 let mvRight = document.getElementById('mvRight')
@@ -35,13 +36,10 @@ function daysInMonth(month, year) {
   return new Date(year, month, 0).getDate();
 }
 
-
-let data = await readData()
-
 function foo(mth) {
   let colourAlphas = []
   let n;
-  n = data[`${year}`]
+  n = data_json[`${year}`]
   if (n != undefined && n[`${months[mth]}`] != undefined) {
     n = n[`${months[mth]}`]
     n.forEach((m) => {
@@ -111,9 +109,9 @@ mvLeft.addEventListener('click', function() {
 function addStreakValue() {
   let overallLength = 0;
 
-  for (let y in data) {
-    for (let m in data[y]) {
-      overallLength += data[y][m].length;
+  for (let y in data_json) {
+    for (let m in data_json[y]) {
+      overallLength += data_json[y][m].length;
     }
   }
   return overallLength
@@ -121,11 +119,8 @@ function addStreakValue() {
 longestStrk.textContent = currentStreak.textContent = addStreakValue() + ' days';
 let target = 1000
 daysLnd.textContent = Math.round((addStreakValue() / target) * 100) + '%'
-
-
-
-async function readData() {
-  return fetch('data.json')
-    .then(res => res.json())
-    .then(jsonResponse => jsonResponse)
 }
+
+fetch('/get-streak-data',{method:'GET'})
+    .then(res => res.json())
+    .then(jsonResponse => startApp(jsonResponse))

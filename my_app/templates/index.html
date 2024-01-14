@@ -5,8 +5,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Streak</title>
-  <script src="lib/eruda.min.js"></script>
-  <link rel="stylesheet" href="style/bootstrap.min.css">
+  <script src="{{ url_for('static', filename='lib/eruda.min.js')}}"></script>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css')}}">
 </head>
 
 <body>
@@ -35,9 +35,10 @@
       </div>
     </div>
   </div>
-  <script src="lib/bootstrap.min.js"></script>
-  <script src="lib/devTools.js"></script>
-  <script type="module" src="index.js"></script>
+  <script src="{{ url_for('static', lib/bootstrap.min.js')}}"></script>
+  <script src="{{ url_for('static', filename='lib/devTools.js')}}"></script>
+  <script type="module" src="{{ url_for('static', filename='js/index.js')}}"></script>
+ <!--  {{ url_for('static', filename='js/mygallery.js')}} -->
 
 </body>
 
