@@ -10,35 +10,43 @@
 </head>
 
 <body>
-  <div style="height: 100%;" class="conatiner w-100 ms-2 bg-light border rounded position-relative" id="streakTable">
-    <p class="text-success text-center fs-3 fw-bolder" id="month"></p>
-    <canvas class="w-100" id="canv"></canvas>
-    <div class="row">
-      <div class="fw-bold col">Current Streak:</div>
-      <div class="fw-bolder col-6 text-primary" id="currentStreak">0</div>
-    </div>
-    <div class="row">
-      <div class="fw-bold col">Days learned:</div>
-      <div class="fw-bolder col-6 text-primary" id="DaysLnd">0</div>
-    </div>
-    <div class="row">
-      <div class="col fw-bold">longest streak:</div>
-      <div class="fw-bolder col-6 text-primary" id="longestStrk">0</div>
-    </div>
-    <div class="row mt-5">
-      <div class="col-6">
-        <button id="mvRight" type="button" class="btn btn-secondary w-100 ">
-          《</button>
-      </div>
-      <div class="col-6">
-        <button id="mvLeft" type="button" class="btn btn-secondary w-100 ">》</button>
+  <ul class="nav nav-tabs justify-content-center" role"tablist">
+    <li class="nav-item" role="presentation"> <button class="nav-link active" id="timer_window_toggler" data-bs-toggle="tab" data-bs-target="#timer_window" role="tab" aria-controls="timer_window" type="button" aria-selected="true">Timer</button> </li>
+    <li class="nav-item" role="presentation"> <button class="nav-link" id="streak_window_toggler" data-bs-toggle="tab" data-bs-target="#streak_window" role="tab" aria-controls="streak_window" type="button" aria-selected="false">Streak</button></li>
+  </ul>
+  <div class="tab-content">
+    <div class="tab-pane fade show active" id="timer_window" r=ole="tabpanel" aria-labelledby="timer_window_toggler">foo</div>
+    <div class="tab-pane" id="streak_window" role="tabpanel" aria-labelledby="streak_window_toggler">
+      <div style="height: 100%;" class="conatiner w-100 ms-2 bg-light border rounded position-relative" id="streakTable">
+        <p class="text-success text-center fs-3 fw-bolder" id="month"></p>
+        <canvas class="w-100" id="canv"></canvas>
+        <div class="row">
+          <div class="fw-bold col">Current Streak:</div>
+          <div class="fw-bolder col-6 text-primary" id="currentStreak">0</div>
+        </div>
+        <div class="row">
+          <div class="fw-bold col">Days learned:</div>
+          <div class="fw-bolder col-6 text-primary" id="DaysLnd">0</div>
+        </div>
+        <div class="row">
+          <div class="col fw-bold">longest streak:</div>
+          <div class="fw-bolder col-6 text-primary" id="longestStrk">0</div>
+        </div>
+        <div class="row mt-5">
+          <div class="col-6">
+            <button id="mvRight" type="button" class="btn btn-secondary w-100 ">
+              《</button>
+          </div>
+          <div class="col-6">
+            <button id="mvLeft" type="button" class="btn btn-secondary w-100 ">》</button>
+          </div>
+        </div>
       </div>
     </div>
   </div>
-  <script src="{{ url_for('static', lib/bootstrap.min.js')}}"></script>
+  <script src="{{ url_for('static', filename='lib/bootstrap.min.js')}}"></script>
   <script src="{{ url_for('static', filename='lib/devTools.js')}}"></script>
   <script type="module" src="{{ url_for('static', filename='js/index.js')}}"></script>
- <!--  {{ url_for('static', filename='js/mygallery.js')}} -->
 
 </body>
 
