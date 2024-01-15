@@ -11,25 +11,10 @@
 </head>
 
 <body>
-  <div id="nav-bar">
-    <ul>
-      <li><button id=timer_toggler>Timer</button></li>
-      <li><button id=streak_toggler>Streak</button></li>
-    </ul>
+  <div id="app">
+
   </div>
-  <div id="timer_window">
-    <div id="progress">
-      
-    </div>
-  </div>
-  <diav class='stk' id='streak_window'>
-    <p id="month"></p>
-    <canvas id="canv">
-    </canvas>
-    <button id="mvLeft">>></button> 
-    <button id="mvRight"><<</button> 
-  </div>
-  
+
   <script type="module" src="{{ url_for('static', filename='lib/phaser.js')}}"></script>
   <script src="{{ url_for('static', filename='lib/devTools.js')}}"></script>
   <script type="module" src="{{ url_for('static', filename='js/index.js')}}"></script>
