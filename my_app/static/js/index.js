@@ -1,11 +1,11 @@
 import Phaser from "../lib/phaser.js";
 import { ProgArc } from "./progArc.js";
 let opts;
-let videos = ["sts",
+let videos = [
   "asthetic-anime.mp4",
   "lo-fi-is-strange-true-colors-lo-fi-is-strange.mp4", "lofi-girl-music.mp4",
   "lofi-lofi-study.mp4", "rain-study.mp4",
-  "will-smith-studying.mp4",'end'
+  "will-smith-studying.mp4"
   ]
 let dropDownList = document.createElement('select');
 
@@ -27,12 +27,12 @@ class progress_bar extends Phaser.Scene {
     super({ key: "progress_bar" })
   }
   preload() {
-    this.load.video("vid1","static/images/"+videos[Math.floor(Math.random()*videos.length)],'loadeddata',false,true)
+    this.load.video("vid1", "static/images/" + videos[Math.floor(Math.random() * videos.length)], 'loadeddata', false, true)
   }
   create() {
-    let vd = this.add.video(0, 0,'vid1').setOrigin(0);
+    let vd = this.add.video(0, 0, 'vid1').setOrigin(0);
     vd.play()
-    vd.setDisplaySize(this.scale.gameSize._width,this.scale.gameSize._height)
+    vd.setDisplaySize(this.scale.gameSize._width, this.scale.gameSize._height)
     vd.setLoop(true)
     let x_pos = this.scale.gameSize._width * 0.15
     let y_pos = this.scale.gameSize._height * 0.15
@@ -90,3 +90,31 @@ var config = {
 };
 var game = new Phaser.Game(config);
 document.getElementById('app').appendChild(document.getElementById('droplist'))
+
+let chartCtx = document.getElementById('StreakChart')
+let dat = fetch('/studyOverview', {method:'GET'}).then(l=>l.json()).then(function(studyData){
+  let myData=studyData[curYear][curMonth]
+  let myDays=[]
+  for (let i = 0; i < myData.length; i++) {
+    myDays.push(`D${i}`)
+  }
+  new Chart(chartCtx, {
+    type: 'line',
+    data: {
+      labels: myDays,
+      datasets: [{
+        label: "minutes",
+        data: myData,
+        borderWidth: 1
+          }]
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    }
+  })
+})
+// const myChart = 

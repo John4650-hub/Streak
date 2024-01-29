@@ -39,3 +39,9 @@ def saveTimeSpent():
   with open('Db/data.json','w') as fh:
     json.dump(data,fh)
   return "data saved to database"
+
+@streaker_app.route('/studyOverview',methods=['GET'])
+def getDataset():
+  with open('Db/data.json','r') as fh:
+    data= json.load(fh)
+  return data
