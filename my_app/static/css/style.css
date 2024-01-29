@@ -1,0 +1,51 @@
+body{
+  background-color: #000;
+}
+/*# startBtn{
+  
+} */
+
+/* Define the basic style of the button */
+#startBtn {
+  /* Green */
+  font-size: 16px;
+  background-color: green;
+  border: 3px solid greenyellow;
+  border-radius: 5px;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  
+  /* Add a box shadow to create a depth effect */
+  box-shadow: 0 4px 8px 0 rgba(250, 250, 250, 0.6);
+  /* Add a transition effect for the box shadow */
+  transition: box-shadow 0.3s;
+}
+
+/* Change the box shadow when the user hovers over the button */
+#startBtn:hover {
+  box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.3);
+}
+
+/* Change the box shadow and the background color when the user clicks the button */
+#startBtn:active {
+  box-shadow: inset 0 2px 4px 0 rgba(0, 0, 0, 0.1);
+  background-color: #3A9F40;
+}
+
+select{
+  font-size: 16px;
+  padding: 15px 52px;
+  background-color: green;
+  color: #fff;
+  border: 3px solid greenyellow;
+  border-radius: 15px;
+  margin-left: 10px;
+  box-shadow: 0 4px 8px 0 rgba(250, 250, 250, 0.6);
+  font-weight: bolder;
+}
+#droplist{
+  display: inline;
+}

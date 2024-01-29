@@ -1,12 +1,18 @@
 import Phaser from "../lib/phaser.js";
 import { ProgArc } from "./progArc.js";
-
+let opts;
+let videos = ["sts",
+  "asthetic-anime.mp4",
+  "lo-fi-is-strange-true-colors-lo-fi-is-strange.mp4", "lofi-girl-music.mp4",
+  "lofi-lofi-study.mp4", "rain-study.mp4",
+  "will-smith-studying.mp4",'end'
+  ]
 let dropDownList = document.createElement('select');
-let DATE = new Date()
 
+let DATE = new Date()
 let [curDate, curMonth, curYear] = DATE.toLocaleString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' }).split(' ')
 
-let opts;
+
 for (let i = 1; i <= 10; i++) {
   opts = document.createElement('option')
   opts.innerText = i * 30
@@ -20,20 +26,27 @@ class progress_bar extends Phaser.Scene {
   constructor() {
     super({ key: "progress_bar" })
   }
+  preload() {
+    this.load.video("vid1","static/images/"+videos[Math.floor(Math.random()*videos.length)],'loadeddata',false,true)
+  }
   create() {
-    let x_pos = 90
-    let y_pos = 100
+    let vd = this.add.video(0, 0,'vid1').setOrigin(0);
+    vd.play()
+    vd.setDisplaySize(this.scale.gameSize._width,this.scale.gameSize._height)
+    vd.setLoop(true)
+    let x_pos = this.scale.gameSize._width * 0.15
+    let y_pos = this.scale.gameSize._height * 0.15
     let rad_sz = 150
     let circle = this.add.circle(x_pos, y_pos, rad_sz).setOrigin(0)
     circle.setStrokeStyle(5, 0xffffff, 1);
     let arc = new ProgArc(this, x_pos, y_pos, rad_sz, -90, 268, false)
-
     document.getElementById('startBtn').addEventListener('click', function() {
       let timeTaken = dropDownList.value
       arc.intiEndAngle()
       let foo = new EventSource(`/stream/${timeTaken}`)
       foo.onmessage = function(event) {
         if (event.data == 'done') {
+          vd.setLoop(false)
           foo.close(); // Close the connection when the timer is done
           fetch('/saveTimeSpent', {
             method: 'POST',
@@ -76,3 +89,4 @@ var config = {
   scene: [progress_bar]
 };
 var game = new Phaser.Game(config);
+document.getElementById('app').appendChild(document.getElementById('droplist'))

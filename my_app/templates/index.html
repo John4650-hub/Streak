@@ -11,13 +11,12 @@
 </head>
 
 <body>
-  <div id=droplist>
-    <button id="startBtn">START TIMER</button><br>
-    <span>Time</spans>
-  </div>
   <div id="app">
   </div>
-
+<div id="droplist">
+  <button id="startBtn">START TIMER</button>
+  
+</div>
   <script type="module" src="{{ url_for('static', filename='lib/phaser.js')}}"></script>
   <script src="{{ url_for('static', filename='lib/devTools.js')}}"></script>
   <script type="module" src="{{ url_for('static', filename='js/index.js')}}"></script>
